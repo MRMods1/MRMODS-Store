@@ -4,15 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🎮 متجر ألعاب وتطبيقات iPhone</title>
-  
-  <!-- تحميل خط من Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- ربط ملف الـ Manifest -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="manifest" href="manifest.json">
 
   <style>
-    /* التنسيق العام */
+    /* [نفس التنسيق بدون تغيير] */
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #f8f8f8;
@@ -40,12 +37,8 @@
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     nav {
@@ -138,7 +131,6 @@
       margin-top: 40px;
     }
 
-    /* تنسيق شريط البحث */
     #searchBar {
       width: 100%;
       padding: 10px;
@@ -148,7 +140,6 @@
       border: 1px solid #ccc;
     }
 
-    /* تصميم الرسالة الترحيبية */
     .welcome-message {
       position: fixed;
       top: 10%;
@@ -167,12 +158,8 @@
     }
 
     @keyframes slideIn {
-      from {
-        transform: translateX(-50%) translateY(-100%);
-      }
-      to {
-        transform: translateX(-50%) translateY(0);
-      }
+      from { transform: translateX(-50%) translateY(-100%); }
+      to { transform: translateX(-50%) translateY(0); }
     }
 
     .close-btn {
@@ -191,7 +178,6 @@
       color: #ffd700;
     }
 
-    /* رسالة "يجب تثبيت التطبيق" */
     .install-message {
       position: fixed;
       top: 0;
@@ -210,18 +196,15 @@
 </head>
 <body>
 
-  <!-- رسالة تثبيت التطبيق -->
   <div class="install-message" id="installMessage">
     <p>📲 لتجربة المتجر، يجب تثبيت التطبيق على جهازك!</p>
   </div>
 
-  <!-- رسالة الترحيب -->
   <div class="welcome-message" id="welcomeMessage">
     <p>🎮 أهلا بك في متجر MRMODS للتطبيقات والألعاب المعدلة للايفون!</p>
     <button class="close-btn" onclick="closeWelcomeMessage()">X</button>
   </div>
 
-  <!-- Navbar -->
   <nav>
     <ul>
       <li><a href="javascript:void(0)" onclick="showTab('games')">الألعاب</a></li>
@@ -229,12 +212,10 @@
     </ul>
   </nav>
 
-  <!-- المحتوى الرئيسي -->
   <div class="container" id="mainContent">
     <h1><img src="https://yt3.googleusercontent.com/S9OBrJ-3VPK8kmNAOe7FktIe8SolU_zDRkDgBQTLuJNFeQUEzrfW3QmV9vlDzj_XU-Ildj4euMU=s160-c-k-c0x00ffffff-no-rj" alt="Store Icon" style="max-width: 40px; vertical-align: middle; margin-left: 10px;"> متجر ألعاب وتطبيقات iPhone</h1>
     <p>لتثبيت الألعاب والتطبيقات، استخدم AltStore أو Sideloadly بعد تحميل الملف.</p>
 
-    <!-- شريط البحث -->
     <input type="text" id="searchBar" onkeyup="filterContent()" placeholder="ابحث هنا...">
 
     <!-- قسم الألعاب -->
@@ -242,12 +223,12 @@
       <div class="game" data-name="Last Day On Earth: Survival">
         <img src="https://m.media-amazon.com/images/I/71h4GRYcQWL.png" alt="Last Day On Earth: Survival">
         <h2>Last Day On Earth: Survival </h2>
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868cb7cf5524635f472cc45" class="download">تحميل اللعبة</a>
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868cb7cf5524635f472cc45" class="download" target="_blank">تحميل اللعبة</a>
       </div>
       <div class="game" data-name="Car Parking">
         <img src="https://pbs.twimg.com/profile_images/1789308457574674432/W5_gHvKH_400x400.jpg" alt="Car Parking">
         <h2>Car Parking</h2>
-        <a href="https://uploda.sh/HLPaKvE6yVB2" class="download">تحميل اللعبة</a>
+        <a href="https://uploda.sh/HLPaKvE6yVB2" class="download" target="_blank">تحميل اللعبة</a>
       </div>
     </div>
 
@@ -256,17 +237,17 @@
       <div class="app" data-name="YouTube">
         <h2>YouTube Plus [v20.16.7]</h2>
         <img src="https://ytliteplus.github.io/Logo.png" alt="YouTube Plus [v20.16.7]">
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c816f5524635f472cc43" class="download">تحميل التطبيق</a>
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c816f5524635f472cc43" class="download" target="_blank">تحميل التطبيق</a>
       </div>
       <div class="app" data-name="WhatsApp">
         <h2>Whatsapp v25.19.10</h2>
         <img src="https://www.divxland.org/wp-content/uploads/2025/03/whatsapp-plus-thumbnail-1.png" alt="WhatsApp">
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c98df5524635f472cc44" class="download">تحميل التطبيق</a>
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c98df5524635f472cc44" class="download" target="_blank">تحميل التطبيق</a>
       </div>
       <div class="app" data-name="Dazz Camera [v2.9.11]">
         <h2> Dazz Camera [v2.9.11] </h2>
         <img src="https://d1nxzqpcg2bym0.cloudfront.net/itunes_connect/1422471180/ed763df0-58f0-11f0-8dc9-4d771225b931/128x128" alt="Dazz Camera [v2.9.11]">
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868e147f5524635f472cc48" class="download">تحميل التطبيق</a>
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868e147f5524635f472cc48" class="download" target="_blank">تحميل التطبيق</a>
       </div>
     </div>
 
@@ -277,52 +258,35 @@
   </div>
 
   <script>
-    // دالة لتبديل التبويبات بين الألعاب والتطبيقات
     function showTab(tabName) {
       const allTabs = document.querySelectorAll('.tab-content');
-      allTabs.forEach(tab => {
-        tab.classList.remove('active');
-      });
-      const activeTab = document.getElementById(tabName);
-      activeTab.classList.add('active');
+      allTabs.forEach(tab => tab.classList.remove('active'));
+      document.getElementById(tabName).classList.add('active');
     }
 
-    // دالة لتصفية الألعاب والتطبيقات باستخدام البحث
     function filterContent() {
       const query = document.getElementById('searchBar').value.toLowerCase();
       const games = document.querySelectorAll('.game');
       const apps = document.querySelectorAll('.app');
 
-      // تصفية الألعاب
       games.forEach(game => {
-        const gameName = game.getAttribute('data-name').toLowerCase();
-        if (gameName.includes(query)) {
-          game.style.display = 'flex';
-        } else {
-          game.style.display = 'none';
-        }
+        const name = game.getAttribute('data-name').toLowerCase();
+        game.style.display = name.includes(query) ? 'flex' : 'none';
       });
 
-      // تصفية التطبيقات
       apps.forEach(app => {
-        const appName = app.getAttribute('data-name').toLowerCase();
-        if (appName.includes(query)) {
-          app.style.display = 'flex';
-        } else {
-          app.style.display = 'none';
-        }
+        const name = app.getAttribute('data-name').toLowerCase();
+        app.style.display = name.includes(query) ? 'flex' : 'none';
       });
     }
 
-    // دالة لإغلاق الرسالة الترحيبية
     function closeWelcomeMessage() {
       document.getElementById('welcomeMessage').style.display = 'none';
     }
 
-    // التحقق من وضع الـ PWA وإخفاء المحتوى في المتصفح العادي
     if (!window.matchMedia('(display-mode: standalone)').matches) {
-      document.getElementById('mainContent').style.display = 'none'; // إخفاء المحتوى
-      document.getElementById('installMessage').style.display = 'block'; // عرض رسالة تثبيت التطبيق
+      document.getElementById('mainContent').style.display = 'none';
+      document.getElementById('installMessage').style.display = 'block';
     }
   </script>
 
