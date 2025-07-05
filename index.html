@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎮متجر ألعاب وتطبيقات iPhone</title>
+  <title>🎮 متجر ألعاب وتطبيقات iPhone</title>
   
   <!-- تحميل خط من Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -164,7 +164,6 @@
       text-align: center;
       font-size: 20px;
       animation: slideIn 1s ease-out forwards;
-      display: none; /* إخفاء الرسالة بشكل افتراضي */
     }
 
     @keyframes slideIn {
@@ -192,17 +191,29 @@
       color: #ffd700;
     }
 
-    /* إخفاء المحتوى قبل التثبيت كـ PWA */
-    .content {
+    /* رسالة "يجب تثبيت التطبيق" */
+    .install-message {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ff6a00;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      text-align: center;
+      width: 100%;
+      z-index: 9999;
       display: none;
-    }
-
-    .content.show {
-      display: block;
     }
   </style>
 </head>
 <body>
+
+  <!-- رسالة تثبيت التطبيق -->
+  <div class="install-message" id="installMessage">
+    <p>📲 لتجربة أفضل، قم بتثبيت التطبيق على جهازك!</p>
+  </div>
 
   <!-- رسالة الترحيب -->
   <div class="welcome-message" id="welcomeMessage">
@@ -219,7 +230,7 @@
   </nav>
 
   <!-- المحتوى الرئيسي -->
-  <div class="container content" id="content">
+  <div class="container" id="mainContent">
     <h1><img src="https://yt3.googleusercontent.com/S9OBrJ-3VPK8kmNAOe7FktIe8SolU_zDRkDgBQTLuJNFeQUEzrfW3QmV9vlDzj_XU-Ildj4euMU=s160-c-k-c0x00ffffff-no-rj" alt="Store Icon" style="max-width: 40px; vertical-align: middle; margin-left: 10px;"> متجر ألعاب وتطبيقات iPhone</h1>
     <p>لتثبيت الألعاب والتطبيقات، استخدم AltStore أو Sideloadly بعد تحميل الملف.</p>
 
@@ -231,12 +242,12 @@
       <div class="game" data-name="Last Day On Earth: Survival">
         <img src="https://m.media-amazon.com/images/I/71h4GRYcQWL.png" alt="Last Day On Earth: Survival">
         <h2>Last Day On Earth: Survival </h2>
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868cb7cf5524635f472cc45" class="download" target="_blank" rel="noopener noreferrer">تحميل اللعبة</a>
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868cb7cf5524635f472cc45" class="download">تحميل اللعبة</a>
       </div>
       <div class="game" data-name="Car Parking">
         <img src="https://pbs.twimg.com/profile_images/1789308457574674432/W5_gHvKH_400x400.jpg" alt="Car Parking">
         <h2>Car Parking</h2>
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868cca0f5524635f472cc46" class="download" target="_blank" rel="noopener noreferrer">تحميل اللعبة</a>
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868cca0f5524635f472cc46" class="download">تحميل اللعبة</a>
       </div>
     </div>
 
@@ -245,17 +256,17 @@
       <div class="app" data-name="YouTube">
         <h2>YouTube Plus [v20.16.7]</h2>
         <img src="https://ytliteplus.github.io/Logo.png" alt="YouTube Plus [v20.16.7]">
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c816f5524635f472cc43" class="download" target="_blank" rel="noopener noreferrer">تحميل التطبيق</a>
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c816f5524635f472cc43" class="download">تحميل التطبيق</a>
       </div>
       <div class="app" data-name="WhatsApp">
         <h2>Whatsapp v25.19.10</h2>
         <img src="https://www.divxland.org/wp-content/uploads/2025/03/whatsapp-plus-thumbnail-1.png" alt="WhatsApp">
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c98df5524635f472cc44" class="download" target="_blank" rel="noopener noreferrer">تحميل التطبيق</a>
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c98df5524635f472cc44" class="download">تحميل التطبيق</a>
       </div>
       <div class="app" data-name="Dazz Camera [v2.9.11]">
         <h2> Dazz Camera [v2.9.11] </h2>
         <img src="https://d1nxzqpcg2bym0.cloudfront.net/itunes_connect/1422471180/ed763df0-58f0-11f0-8dc9-4d771225b931/128x128" alt="Dazz Camera [v2.9.11]">
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868e147f5524635f472cc48" class="download" target="_blank" rel="noopener noreferrer">تحميل التطبيق</a>
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868e147f5524635f472cc48" class="download">تحميل التطبيق</a>
       </div>
     </div>
 
@@ -308,16 +319,11 @@
       document.getElementById('welcomeMessage').style.display = 'none';
     }
 
-    // دالة للتحقق من التثبيت كـ PWA
-    function checkPWA() {
-      if (window.matchMedia('(display-mode: standalone)').matches) {
-        document.getElementById('content').classList.add('show'); // عرض المحتوى
-        document.getElementById('welcomeMessage').style.display = 'block'; // عرض الرسالة الترحيبية إذا تم تثبيت PWA
-      }
+    // التحقق من وضع الـ PWA وإخفاء المحتوى في المتصفح العادي
+    if (!window.matchMedia('(display-mode: standalone)').matches) {
+      document.getElementById('mainContent').style.display = 'none'; // إخفاء المحتوى
+      document.getElementById('installMessage').style.display = 'block'; // عرض رسالة تثبيت التطبيق
     }
-
-    // استدعاء دالة التحقق عند تحميل الصفحة
-    window.addEventListener('load', checkPWA);
   </script>
 
 </body>
