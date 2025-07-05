@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎮 متجر ألعاب وتطبيقات iPhone</title>
+  
+  <!-- تحميل خط من Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* التنسيق العام */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    h1, h2 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 30px;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav {
+      background: #007aff;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffd700;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .game, .app {
+      margin: 25px 0;
+      padding: 20px;
+      background-color: #f1f1f1;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .game h2, .app h2 {
+      font-size: 24px;
+    }
+
+    .game a, .app a {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .game a:hover, .app a:hover {
+      background-color: #218838;
+    }
+
+    footer {
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    /* تأثيرات للصور أو الرموز */
+    .game img, .app img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .game img:hover, .app img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="javascript:void(0)" onclick="showTab('games')">الألعاب</a></li>
+      <li><a href="javascript:void(0)" onclick="showTab('apps')">التطبيقات</a></li>
+    </ul>
+  </nav>
+
+  <!-- المحتوى الرئيسي -->
+  <div class="container">
+    <h1>📱 متجر ألعاب وتطبيقات iPhone</h1>
+    <p>لتثبيت الألعاب والتطبيقات، استخدم AltStore أو Sideloadly بعد تحميل الملف.</p>
+
+    <!-- قسم الألعاب -->
+    <div id="games" class="tab-content active">
+      <div class="game">
+        <h2>🏎️ Asphalt 8</h2>
+        <p>سباق سيارات مليء بالحماس!</p>
+        <a href="https://example.com/asphalt8.ipa" class="download">تحميل اللعبة</a>
+      </div>
+      <div class="game">
+        <h2>🧩 Monument Valley</h2>
+        <p>لعبة ألغاز بجرافيكس مذهل.</p>
+        <a href="https://example.com/monument.ipa" class="download">تحميل اللعبة</a>
+      </div>
+    </div>
+
+    <!-- قسم التطبيقات -->
+    <div id="apps" class="tab-content">
+      <div class="app">
+        <h2>📷 Instagram</h2>
+        <p>تطبيق التواصل الاجتماعي الشهير.</p>
+        <a href="https://example.com/instagram.ipa" class="download">تحميل التطبيق</a>
+      </div>
+      <div class="app">
+        <h2>💬 WhatsApp</h2>
+        <p>تطبيق المراسلة المجاني.</p>
+        <a href="https://example.com/whatsapp.ipa" class="download">تحميل التطبيق</a>
+      </div>
+    </div>
+
+    <footer>
+      ⚠️ جميع الحقوق محفوظة لأصحاب الألعاب والتطبيقات الأصلية. هذا الموقع لتجارب تعليمية فقط.<br>
+      لتحميل وتثبيت التطبيقات، راجع دليل AltStore أو Sideloadly.
+    </footer>
+  </div>
+
+  <script>
+    // دالة لتبديل التبويبات بين الألعاب والتطبيقات
+    function showTab(tabName) {
+      const allTabs = document.querySelectorAll('.tab-content');
+      allTabs.forEach(tab => {
+        tab.classList.remove('active');
+      });
+      const activeTab = document.getElementById(tabName);
+      activeTab.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
