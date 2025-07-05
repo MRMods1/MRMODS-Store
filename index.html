@@ -4,12 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🎮 متجر ألعاب وتطبيقات iPhone</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="manifest" href="manifest.json">
-
   <style>
-    /* [نفس التنسيق بدون تغيير] */
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #f8f8f8;
@@ -17,278 +14,193 @@
       padding: 0;
       color: #333;
     }
-
     h1, h2 {
       color: #333;
       text-align: center;
-      margin-bottom: 10px;
     }
-
     .container {
       width: 90%;
       max-width: 1200px;
       margin: 20px auto;
       padding: 30px;
-      background: #ffffff;
+      background: #fff;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       opacity: 0;
       animation: fadeIn 2s forwards;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-
     nav {
       background: #007aff;
       padding: 15px;
       border-radius: 10px;
       margin-bottom: 20px;
     }
-
     nav ul {
       list-style: none;
       padding: 0;
       text-align: center;
     }
-
     nav ul li {
       display: inline;
       margin: 0 15px;
     }
-
     nav ul li a {
       color: white;
       text-decoration: none;
       font-size: 18px;
       font-weight: bold;
-      transition: color 0.3s;
     }
-
-    nav ul li a:hover {
-      color: #ffd700;
-    }
-
     .tab-content {
       display: none;
     }
-
     .tab-content.active {
       display: block;
     }
-
     .game, .app {
       margin: 25px 0;
       padding: 20px;
       background-color: #f1f1f1;
       border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       text-align: center;
     }
-
     .game img, .app img {
-      width: 100%;
       max-width: 150px;
-      height: auto;
       border-radius: 8px;
-      object-fit: cover;
       margin-bottom: 15px;
-      transition: transform 0.3s ease;
     }
-
-    .game img:hover, .app img:hover {
-      transform: scale(1.05);
-    }
-
-    .game h2, .app h2 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
     .game a, .app a {
       background-color: #28a745;
       color: white;
       padding: 10px 20px;
       text-decoration: none;
       border-radius: 5px;
-      transition: background-color 0.3s;
+      display: inline-block;
       margin-top: 10px;
     }
-
-    .game a:hover, .app a:hover {
-      background-color: #218838;
-    }
-
-    footer {
-      text-align: center;
-      color: #888;
-      font-size: 14px;
-      margin-top: 40px;
-    }
-
-    #searchBar {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      font-size: 18px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-
-    .welcome-message {
+    .install-message, .welcome-message {
       position: fixed;
-      top: 10%;
       left: 50%;
       transform: translateX(-50%);
+      z-index: 1000;
+      width: 90%;
+      text-align: center;
+    }
+    .install-message {
+      top: 0;
+      background: #ff6a00;
+      color: white;
+      padding: 15px;
+      display: none;
+    }
+    .welcome-message {
+      top: 10%;
       background: #007aff;
       color: white;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      width: 80%;
-      text-align: center;
-      font-size: 20px;
       animation: slideIn 1s ease-out forwards;
     }
-
     @keyframes slideIn {
       from { transform: translateX(-50%) translateY(-100%); }
       to { transform: translateX(-50%) translateY(0); }
     }
-
     .close-btn {
-      background: transparent;
-      color: white;
-      border: none;
-      font-size: 20px;
       position: absolute;
       top: 10px;
       right: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .close-btn:hover {
-      color: #ffd700;
-    }
-
-    .install-message {
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #ff6a00;
+      background: none;
+      border: none;
       color: white;
-      padding: 15px 30px;
-      font-size: 18px;
-      text-align: center;
-      width: 100%;
-      z-index: 9999;
-      display: none;
+      font-size: 20px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <div class="install-message" id="installMessage">
-    <p>📲 لتجربة المتجر، يجب تثبيت التطبيق على جهازك!</p>
-  </div>
+<div class="install-message" id="installMessage">
+  📲 لتجربة المتجر، يجب تثبيت التطبيق على جهازك!
+</div>
 
-  <div class="welcome-message" id="welcomeMessage">
-    <p>🎮 أهلا بك في متجر MRMODS للتطبيقات والألعاب المعدلة للايفون!</p>
-    <button class="close-btn" onclick="closeWelcomeMessage()">X</button>
-  </div>
+<div class="welcome-message" id="welcomeMessage">
+  🎮 أهلاً بك في متجر MRMODS للتطبيقات والألعاب المعدلة للايفون!
+  <button class="close-btn" onclick="closeWelcomeMessage()">×</button>
+</div>
 
-  <nav>
-    <ul>
-      <li><a href="javascript:void(0)" onclick="showTab('games')">الألعاب</a></li>
-      <li><a href="javascript:void(0)" onclick="showTab('apps')">التطبيقات</a></li>
-    </ul>
-  </nav>
+<nav>
+  <ul>
+    <li><a href="javascript:void(0)" onclick="showTab('games')">الألعاب</a></li>
+    <li><a href="javascript:void(0)" onclick="showTab('apps')">التطبيقات</a></li>
+  </ul>
+</nav>
 
-  <div class="container" id="mainContent">
-    <h1><img src="https://yt3.googleusercontent.com/S9OBrJ-3VPK8kmNAOe7FktIe8SolU_zDRkDgBQTLuJNFeQUEzrfW3QmV9vlDzj_XU-Ildj4euMU=s160-c-k-c0x00ffffff-no-rj" alt="Store Icon" style="max-width: 40px; vertical-align: middle; margin-left: 10px;"> متجر ألعاب وتطبيقات iPhone</h1>
-    <p>لتثبيت الألعاب والتطبيقات، استخدم AltStore أو Sideloadly بعد تحميل الملف.</p>
+<div class="container" id="mainContent">
+  <h1>🕹️ متجر ألعاب وتطبيقات iPhone</h1>
+  <p>لتثبيت الألعاب والتطبيقات، استخدم AltStore أو Sideloadly بعد تحميل الملف.</p>
 
-    <input type="text" id="searchBar" onkeyup="filterContent()" placeholder="ابحث هنا...">
+  <input type="text" id="searchBar" onkeyup="filterContent()" placeholder="ابحث هنا...">
 
-    <!-- قسم الألعاب -->
-    <div id="games" class="tab-content active">
-      <div class="game" data-name="Last Day On Earth: Survival">
-        <img src="https://m.media-amazon.com/images/I/71h4GRYcQWL.png" alt="Last Day On Earth: Survival">
-        <h2>Last Day On Earth: Survival </h2>
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868cb7cf5524635f472cc45" class="download" target="_blank">تحميل اللعبة</a>
-      </div>
-      <div class="game" data-name="Car Parking">
-        <img src="https://pbs.twimg.com/profile_images/1789308457574674432/W5_gHvKH_400x400.jpg" alt="Car Parking">
-        <h2>Car Parking</h2>
-        <a href="https://uploda.sh/HLPaKvE6yVB2" class="download" target="_blank">تحميل اللعبة</a>
-      </div>
+  <div id="games" class="tab-content active">
+    <div class="game" data-name="Last Day On Earth">
+      <img src="https://m.media-amazon.com/images/I/71h4GRYcQWL.png">
+      <h2>Last Day On Earth</h2>
+      <a href="https://filesharingbot-by-aj.onrender.com/dl/6868cb7cf5524635f472cc45" onclick="openInSafari(this.href); return false;">تحميل اللعبة</a>
     </div>
-
-    <!-- قسم التطبيقات -->
-    <div id="apps" class="tab-content">
-      <div class="app" data-name="YouTube">
-        <h2>YouTube Plus [v20.16.7]</h2>
-        <img src="https://ytliteplus.github.io/Logo.png" alt="YouTube Plus [v20.16.7]">
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c816f5524635f472cc43" class="download" target="_blank">تحميل التطبيق</a>
-      </div>
-      <div class="app" data-name="WhatsApp">
-        <h2>Whatsapp v25.19.10</h2>
-        <img src="https://www.divxland.org/wp-content/uploads/2025/03/whatsapp-plus-thumbnail-1.png" alt="WhatsApp">
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c98df5524635f472cc44" class="download" target="_blank">تحميل التطبيق</a>
-      </div>
-      <div class="app" data-name="Dazz Camera [v2.9.11]">
-        <h2> Dazz Camera [v2.9.11] </h2>
-        <img src="https://d1nxzqpcg2bym0.cloudfront.net/itunes_connect/1422471180/ed763df0-58f0-11f0-8dc9-4d771225b931/128x128" alt="Dazz Camera [v2.9.11]">
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868e147f5524635f472cc48" class="download" target="_blank">تحميل التطبيق</a>
-      </div>
+    <div class="game" data-name="Car Parking">
+      <img src="https://pbs.twimg.com/profile_images/1789308457574674432/W5_gHvKH_400x400.jpg">
+      <h2>Car Parking</h2>
+      <a href="https://uploda.sh/HLPaKvE6yVB2" onclick="openInSafari(this.href); return false;">تحميل اللعبة</a>
     </div>
-
-    <footer>
-      ⚠️ جميع الحقوق محفوظة لأصحاب الألعاب والتطبيقات الأصلية. هذا الموقع لتسهيل التحميل للتطبيقات فقط.<br>
-      لتحميل وتثبيت التطبيقات، راجع قناتي علي اليوتيوب MRMODS.
-    </footer>
   </div>
 
-  <script>
-    function showTab(tabName) {
-      const allTabs = document.querySelectorAll('.tab-content');
-      allTabs.forEach(tab => tab.classList.remove('active'));
-      document.getElementById(tabName).classList.add('active');
-    }
+  <div id="apps" class="tab-content">
+    <div class="app" data-name="YouTube">
+      <h2>YouTube Plus</h2>
+      <img src="https://ytliteplus.github.io/Logo.png">
+      <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c816f5524635f472cc43" onclick="openInSafari(this.href); return false;">تحميل التطبيق</a>
+    </div>
+    <div class="app" data-name="WhatsApp">
+      <h2>Whatsapp</h2>
+      <img src="https://www.divxland.org/wp-content/uploads/2025/03/whatsapp-plus-thumbnail-1.png">
+      <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c98df5524635f472cc44" onclick="openInSafari(this.href); return false;">تحميل التطبيق</a>
+    </div>
+  </div>
 
-    function filterContent() {
-      const query = document.getElementById('searchBar').value.toLowerCase();
-      const games = document.querySelectorAll('.game');
-      const apps = document.querySelectorAll('.app');
+  <footer>
+    ⚠️ جميع الحقوق محفوظة لأصحاب الألعاب والتطبيقات الأصلية. هذا الموقع لتسهيل التحميل فقط.
+  </footer>
+</div>
 
-      games.forEach(game => {
-        const name = game.getAttribute('data-name').toLowerCase();
-        game.style.display = name.includes(query) ? 'flex' : 'none';
-      });
-
-      apps.forEach(app => {
-        const name = app.getAttribute('data-name').toLowerCase();
-        app.style.display = name.includes(query) ? 'flex' : 'none';
-      });
-    }
-
-    function closeWelcomeMessage() {
-      document.getElementById('welcomeMessage').style.display = 'none';
-    }
-
-    if (!window.matchMedia('(display-mode: standalone)').matches) {
-      document.getElementById('mainContent').style.display = 'none';
-      document.getElementById('installMessage').style.display = 'block';
-    }
-  </script>
+<script>
+function showTab(tab) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById(tab).classList.add('active');
+}
+function filterContent() {
+  const q = document.getElementById('searchBar').value.toLowerCase();
+  document.querySelectorAll('.game, .app').forEach(item => {
+    item.style.display = item.getAttribute('data-name').toLowerCase().includes(q) ? 'block' : 'none';
+  });
+}
+function closeWelcomeMessage() {
+  document.getElementById('welcomeMessage').style.display = 'none';
+}
+function openInSafari(url) {
+  if (window.navigator.standalone) {
+    window.location.href = "x-web-search://" + encodeURIComponent(url);
+  } else {
+    window.open(url, '_blank');
+  }
+}
+if (!window.matchMedia('(display-mode: standalone)').matches) {
+  document.getElementById('mainContent').style.display = 'none';
+  document.getElementById('installMessage').style.display = 'block';
+}
+</script>
 
 </body>
 </html>
