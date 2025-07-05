@@ -1,19 +1,19 @@
 {
+  "name": "MRMODS متجر ألعاب وتطبيقات iPhone",
   "short_name": "MRMODS",
-  "name": "MRMODS - متجر ألعاب وتطبيقات iPhone",
-  "description": "متجر لتحميل الألعاب والتطبيقات المعدلة لأجهزة iPhone.",
-  "start_url": "/index.html",
+  "description": "متجر ألعاب وتطبيقات للايفون",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#007aff",
   "icons": [
     {
-      "src": "https://yt3.googleusercontent.com/S9OBrJ-3VPK8kmNAOe7FktIe8SolU_zDRkDgBQTLuJNFeQUEzrfW3QmV9vlDzj_XU-Ildj4euMU=s160-c-k-c0x00ffffff-no-rj",
+      "src": "icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://yt3.googleusercontent.com/S9OBrJ-3VPK8kmNAOe7FktIe8SolU_zDRkDgBQTLuJNFeQUEzrfW3QmV9vlDzj_XU-Ildj4euMU=s160-c-k-c0x00ffffff-no-rj",
+      "src": "icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
