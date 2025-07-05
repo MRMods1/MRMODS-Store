@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎮متجر ألعاب وتطبيقات iPhone</title>
+  <title>🎮 متجر ألعاب وتطبيقات iPhone</title>
   
   <!-- تحميل خط من Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -190,9 +190,30 @@
     .close-btn:hover {
       color: #ffd700;
     }
+
+    /* رسالة "يجب تثبيت التطبيق" */
+    .install-message {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ff6a00;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      text-align: center;
+      width: 100%;
+      z-index: 9999;
+      display: none;
+    }
   </style>
 </head>
 <body>
+
+  <!-- رسالة تثبيت التطبيق -->
+  <div class="install-message" id="installMessage">
+    <p>📲 لتجربة أفضل، قم بتثبيت التطبيق على جهازك!</p>
+  </div>
 
   <!-- رسالة الترحيب -->
   <div class="welcome-message" id="welcomeMessage">
@@ -296,6 +317,11 @@
     // دالة لإغلاق الرسالة الترحيبية
     function closeWelcomeMessage() {
       document.getElementById('welcomeMessage').style.display = 'none';
+    }
+
+    // دالة لعرض رسالة "يجب تثبيت التطبيق" إذا لم يتم تثبيت الـ PWA
+    if (!window.matchMedia('(display-mode: standalone)').matches) {
+      document.getElementById('installMessage').style.display = 'block';
     }
   </script>
 
