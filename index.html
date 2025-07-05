@@ -16,13 +16,7 @@
       padding: 0;
       color: #333;
     }
-
-    h1, h2 {
-      color: #333;
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
+    h1, h2 { color: #333; text-align: center; margin-bottom: 10px; }
     .container {
       width: 90%;
       max-width: 1200px;
@@ -34,11 +28,7 @@
       opacity: 0;
       animation: fadeIn 2s forwards;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     nav {
       background: #007aff;
@@ -46,18 +36,8 @@
       border-radius: 10px;
       margin-bottom: 20px;
     }
-
-    nav ul {
-      list-style: none;
-      padding: 0;
-      text-align: center;
-    }
-
-    nav ul li {
-      display: inline;
-      margin: 0 15px;
-    }
-
+    nav ul { list-style: none; padding: 0; text-align: center; }
+    nav ul li { display: inline; margin: 0 15px; }
     nav ul li a {
       color: white;
       text-decoration: none;
@@ -65,18 +45,10 @@
       font-weight: bold;
       transition: color 0.3s;
     }
+    nav ul li a:hover { color: #ffd700; }
 
-    nav ul li a:hover {
-      color: #ffd700;
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
 
     .game, .app {
       margin: 25px 0;
@@ -99,15 +71,9 @@
       margin-bottom: 15px;
       transition: transform 0.3s ease;
     }
+    .game img:hover, .app img:hover { transform: scale(1.05); }
 
-    .game img:hover, .app img:hover {
-      transform: scale(1.05);
-    }
-
-    .game h2, .app h2 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
+    .game h2, .app h2 { font-size: 24px; margin-bottom: 10px; }
 
     .game a, .app a {
       background-color: #28a745;
@@ -118,27 +84,7 @@
       transition: background-color 0.3s;
       margin-top: 10px;
     }
-
-    .game a:hover, .app a:hover {
-      background-color: #218838;
-    }
-
-    .safari-btn {
-      display: none;
-      margin-top: 10px;
-      padding: 8px 16px;
-      background-color: #007aff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 15px;
-      transition: background-color 0.3s;
-    }
-
-    .safari-btn:hover {
-      background-color: #005ecb;
-    }
+    .game a:hover, .app a:hover { background-color: #218838; }
 
     footer {
       text-align: center;
@@ -172,14 +118,9 @@
       font-size: 20px;
       animation: slideIn 1s ease-out forwards;
     }
-
     @keyframes slideIn {
-      from {
-        transform: translateX(-50%) translateY(-100%);
-      }
-      to {
-        transform: translateX(-50%) translateY(0);
-      }
+      from { transform: translateX(-50%) translateY(-100%); }
+      to { transform: translateX(-50%) translateY(0); }
     }
 
     .close-btn {
@@ -193,10 +134,7 @@
       cursor: pointer;
       transition: 0.3s;
     }
-
-    .close-btn:hover {
-      color: #ffd700;
-    }
+    .close-btn:hover { color: #ffd700; }
 
     .install-message {
       position: fixed;
@@ -241,30 +179,31 @@
     <div id="games" class="tab-content active">
       <div class="game" data-name="Last Day On Earth: Survival">
         <img src="https://m.media-amazon.com/images/I/71h4GRYcQWL.png" alt="Last Day On Earth: Survival">
-        <h2>Last Day On Earth: Survival </h2>
+        <h2>Last Day On Earth: Survival</h2>
         <a href="https://filesharingbot-by-aj.onrender.com/dl/6868cb7cf5524635f472cc45" class="download">تحميل اللعبة</a>
-        <button class="safari-btn" onclick="openInSafari(this)">🔗 فتح في Safari</button>
       </div>
       <div class="game" data-name="Car Parking">
         <img src="https://pbs.twimg.com/profile_images/1789308457574674432/W5_gHvKH_400x400.jpg" alt="Car Parking">
         <h2>Car Parking</h2>
         <a href="https://uploda.sh/HLPaKvE6yVB2" class="download">تحميل اللعبة</a>
-        <button class="safari-btn" onclick="openInSafari(this)">🔗 فتح في Safari</button>
       </div>
     </div>
 
     <div id="apps" class="tab-content">
       <div class="app" data-name="YouTube">
         <h2>YouTube Plus [v20.16.7]</h2>
-        <img src="https://ytliteplus.github.io/Logo.png" alt="YouTube Plus">
+        <img src="https://ytliteplus.github.io/Logo.png" alt="YouTube Plus [v20.16.7]">
         <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c816f5524635f472cc43" class="download">تحميل التطبيق</a>
-        <button class="safari-btn" onclick="openInSafari(this)">🔗 فتح في Safari</button>
       </div>
       <div class="app" data-name="WhatsApp">
         <h2>Whatsapp v25.19.10</h2>
         <img src="https://www.divxland.org/wp-content/uploads/2025/03/whatsapp-plus-thumbnail-1.png" alt="WhatsApp">
         <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c98df5524635f472cc44" class="download">تحميل التطبيق</a>
-        <button class="safari-btn" onclick="openInSafari(this)">🔗 فتح في Safari</button>
+      </div>
+      <div class="app" data-name="Dazz Camera [v2.9.11]">
+        <h2>Dazz Camera [v2.9.11]</h2>
+        <img src="https://d1nxzqpcg2bym0.cloudfront.net/itunes_connect/1422471180/ed763df0-58f0-11f0-8dc9-4d771225b931/128x128" alt="Dazz Camera">
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868e147f5524635f472cc48" class="download">تحميل التطبيق</a>
       </div>
     </div>
 
@@ -299,27 +238,13 @@
       document.getElementById('installMessage').style.display = 'block';
     }
 
-    // التحقق من كون الموقع يعمل داخل PWA
-    function isInStandaloneMode() {
-      return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-    }
-
-    function showSafariButtonsIfPWA() {
-      if (isInStandaloneMode()) {
-        document.querySelectorAll('.safari-btn').forEach(btn => {
-          btn.style.display = 'inline-block';
-        });
-      }
-    }
-
-    function openInSafari(button) {
-      const link = button.parentElement.querySelector('.download');
-      if (link && link.href) {
-        window.open(link.href, '_blank');
-      }
-    }
-
-    window.addEventListener('load', showSafariButtonsIfPWA);
+    // ✅ فتح روابط التحميل في Safari (خارج WebView)
+    document.querySelectorAll('.download').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.open(this.href, '_blank');
+      });
+    });
   </script>
 
 </body>
