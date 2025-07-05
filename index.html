@@ -191,6 +191,15 @@
     .close-btn:hover {
       color: #ffd700;
     }
+
+    /* إخفاء المحتوى قبل التثبيت كـ PWA */
+    .content {
+      display: none;
+    }
+
+    .content.show {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -210,7 +219,7 @@
   </nav>
 
   <!-- المحتوى الرئيسي -->
-  <div class="container">
+  <div class="container content" id="content">
     <h1><img src="https://yt3.googleusercontent.com/S9OBrJ-3VPK8kmNAOe7FktIe8SolU_zDRkDgBQTLuJNFeQUEzrfW3QmV9vlDzj_XU-Ildj4euMU=s160-c-k-c0x00ffffff-no-rj" alt="Store Icon" style="max-width: 40px; vertical-align: middle; margin-left: 10px;"> متجر ألعاب وتطبيقات iPhone</h1>
     <p>لتثبيت الألعاب والتطبيقات، استخدم AltStore أو Sideloadly بعد تحميل الملف.</p>
 
@@ -302,6 +311,7 @@
     // دالة للتحقق من التثبيت كـ PWA
     function checkPWA() {
       if (window.matchMedia('(display-mode: standalone)').matches) {
+        document.getElementById('content').classList.add('show'); // عرض المحتوى
         document.getElementById('welcomeMessage').style.display = 'block'; // عرض الرسالة الترحيبية إذا تم تثبيت PWA
       }
     }
