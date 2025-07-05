@@ -164,6 +164,7 @@
       text-align: center;
       font-size: 20px;
       animation: slideIn 1s ease-out forwards;
+      display: none; /* إخفاء الرسالة بشكل افتراضي */
     }
 
     @keyframes slideIn {
@@ -297,6 +298,16 @@
     function closeWelcomeMessage() {
       document.getElementById('welcomeMessage').style.display = 'none';
     }
+
+    // دالة للتحقق من التثبيت كـ PWA
+    function checkPWA() {
+      if (window.matchMedia('(display-mode: standalone)').matches) {
+        document.getElementById('welcomeMessage').style.display = 'block'; // عرض الرسالة الترحيبية إذا تم تثبيت PWA
+      }
+    }
+
+    // استدعاء دالة التحقق عند تحميل الصفحة
+    window.addEventListener('load', checkPWA);
   </script>
 
 </body>
