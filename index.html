@@ -78,6 +78,16 @@
       background-color: #f1f1f1;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+    }
+
+    .game img, .app img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      margin-left: 15px;
+      object-fit: cover;
     }
 
     .game h2, .app h2 {
@@ -91,6 +101,7 @@
       text-decoration: none;
       border-radius: 5px;
       transition: background-color 0.3s;
+      margin-left: auto;
     }
 
     .game a:hover, .app a:hover {
@@ -104,15 +115,19 @@
       margin-top: 40px;
     }
 
-    /* تأثيرات للصور أو الرموز */
-    .game img, .app img {
-      width: 100%;
-      border-radius: 8px;
-      transition: transform 0.3s ease;
-    }
-
+    /* تأثيرات للصور */
     .game img:hover, .app img:hover {
       transform: scale(1.05);
+    }
+
+    /* تنسيق شريط البحث */
+    #searchBar {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 18px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
   </style>
 </head>
@@ -131,30 +146,37 @@
     <h1>📱 متجر ألعاب وتطبيقات iPhone</h1>
     <p>لتثبيت الألعاب والتطبيقات، استخدم AltStore أو Sideloadly بعد تحميل الملف.</p>
 
+    <!-- شريط البحث -->
+    <input type="text" id="searchBar" onkeyup="filterContent()" placeholder="ابحث هنا...">
+
     <!-- قسم الألعاب -->
     <div id="games" class="tab-content active">
-      <div class="game">
+      <div class="game" data-name="Asphalt 8">
         <h2>🏎️ Asphalt 8</h2>
         <p>سباق سيارات مليء بالحماس!</p>
+        <img src="https://via.placeholder.com/80x80" alt="Asphalt 8">
         <a href="https://example.com/asphalt8.ipa" class="download">تحميل اللعبة</a>
       </div>
-      <div class="game">
+      <div class="game" data-name="Monument Valley">
         <h2>🧩 Monument Valley</h2>
         <p>لعبة ألغاز بجرافيكس مذهل.</p>
+        <img src="https://via.placeholder.com/80x80" alt="Monument Valley">
         <a href="https://example.com/monument.ipa" class="download">تحميل اللعبة</a>
       </div>
     </div>
 
     <!-- قسم التطبيقات -->
     <div id="apps" class="tab-content">
-      <div class="app">
+      <div class="app" data-name="Instagram">
         <h2>📷 Instagram</h2>
         <p>تطبيق التواصل الاجتماعي الشهير.</p>
+        <img src="https://via.placeholder.com/80x80" alt="Instagram">
         <a href="https://example.com/instagram.ipa" class="download">تحميل التطبيق</a>
       </div>
-      <div class="app">
+      <div class="app" data-name="WhatsApp">
         <h2>💬 WhatsApp</h2>
         <p>تطبيق المراسلة المجاني.</p>
+        <img src="https://via.placeholder.com/80x80" alt="WhatsApp">
         <a href="https://example.com/whatsapp.ipa" class="download">تحميل التطبيق</a>
       </div>
     </div>
@@ -174,6 +196,33 @@
       });
       const activeTab = document.getElementById(tabName);
       activeTab.classList.add('active');
+    }
+
+    // دالة لتصفية الألعاب والتطبيقات باستخدام البحث
+    function filterContent() {
+      const query = document.getElementById('searchBar').value.toLowerCase();
+      const games = document.querySelectorAll('.game');
+      const apps = document.querySelectorAll('.app');
+
+      // تصفية الألعاب
+      games.forEach(game => {
+        const gameName = game.getAttribute('data-name').toLowerCase();
+        if (gameName.includes(query)) {
+          game.style.display = 'flex';
+        } else {
+          game.style.display = 'none';
+        }
+      });
+
+      // تصفية التطبيقات
+      apps.forEach(app => {
+        const appName = app.getAttribute('data-name').toLowerCase();
+        if (appName.includes(query)) {
+          app.style.display = 'flex';
+        } else {
+          app.style.display = 'none';
+        }
+      });
     }
   </script>
 
