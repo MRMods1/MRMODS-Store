@@ -32,6 +32,17 @@
       background: #ffffff;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
 
     nav {
@@ -134,6 +145,49 @@
       border: 1px solid #ccc;
     }
 
+    /* تصميم الرسالة الترحيبية */
+    .welcome-message {
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #007aff;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      width: 80%;
+      text-align: center;
+      font-size: 20px;
+      animation: slideIn 1s ease-out forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-50%) translateY(-100%);
+      }
+      to {
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    .close-btn {
+      background: transparent;
+      color: white;
+      border: none;
+      font-size: 20px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #ffd700;
+    }
+
     /* Media Queries لتحسين الاستجابة */
     @media (max-width: 1200px) {
       .container {
@@ -198,6 +252,12 @@
 </head>
 <body>
 
+  <!-- رسالة الترحيب -->
+  <div class="welcome-message" id="welcomeMessage">
+    <p>👋 أهلا بك في متجر MRMODS للتطبيقات والألعاب المعدلة للايفون!</p>
+    <button class="close-btn" onclick="closeWelcomeMessage()">X</button>
+  </div>
+
   <!-- Navbar -->
   <nav>
     <ul>
@@ -248,7 +308,7 @@
       لتحميل وتثبيت التطبيقات، راجع قناتي علي اليوتيوب MRMODS.
     </footer>
   </div>
-  
+
   <script>
     // دالة لتبديل التبويبات بين الألعاب والتطبيقات
     function showTab(tabName) {
@@ -285,6 +345,11 @@
           app.style.display = 'none';
         }
       });
+    }
+
+    // دالة لإغلاق الرسالة الترحيبية
+    function closeWelcomeMessage() {
+      document.getElementById('welcomeMessage').style.display = 'none';
     }
   </script>
 
