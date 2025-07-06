@@ -51,12 +51,19 @@
     nav button:hover {
       background-color: #005ecb;
     }
+    /* إخفاء المحتوى في التصفح العادي */
     main {
+      display: none;
       flex-grow: 1;
       max-width: 1100px;
       margin: 25px auto;
       padding: 0 15px 50px;
       width: 100%;
+    }
+    /* إظهار المحتوى في وضع PWA */
+    main.pwa-active {
+      display: flex;
+      flex-direction: column;
     }
     #searchBar {
       width: 100%;
@@ -282,6 +289,15 @@
       }
     });
   }
+
+  // إظهار المحتوى فقط في وضع PWA
+  document.addEventListener('DOMContentLoaded', () => {
+    const isInStandaloneMode = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+    if (isInStandaloneMode) {
+      document.querySelector('main').classList.add('pwa-active');
+    }
+  });
 </script>
 
 </body>
