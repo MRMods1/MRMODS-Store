@@ -2,185 +2,187 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🎮 متجر ألعاب وتطبيقات iPhone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🎮 متجر ألعاب وتطبيقات iPhone - MRMODS</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   
-  <!-- Manifest -->
-  <link rel="manifest" href="manifest.json" />
-
   <style>
+    /* Reset بسيط */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f8f8f8;
+      background-color: #f5f7fa;
       margin: 0;
       padding: 0;
-      color: #333;
+      color: #222;
+      direction: rtl;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    h1, h2 {
-      color: #333;
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 20px;
-      background: #ffffff;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      animation: fadeIn 2s forwards;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
+    /* Nav */
     nav {
-      background: #007aff;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 20px;
+      background: #fff;
+      padding: 15px 0;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      text-align: center;
     }
 
     nav ul {
-      list-style: none;
+      margin: 0;
       padding: 0;
-      text-align: center;
+      list-style: none;
     }
 
     nav ul li {
-      display: inline;
-      margin: 0 15px;
+      display: inline-block;
+      margin: 0 30px;
     }
 
     nav ul li a {
-      color: white;
-      text-decoration: none;
+      font-weight: 600;
       font-size: 18px;
-      font-weight: bold;
-      transition: color 0.3s;
+      color: #007aff;
+      text-decoration: none;
+      padding-bottom: 5px;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.3s, color 0.3s;
     }
 
+    nav ul li a.active,
     nav ul li a:hover {
-      color: #ffd700;
+      border-bottom-color: #007aff;
+      color: #005bb5;
     }
 
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 25px auto;
+      padding: 0 20px 40px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* عنوان الموقع */
+    .site-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin: 30px 0 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      color: #222;
+    }
+
+    .site-title img {
+      max-width: 40px;
+      border-radius: 6px;
+    }
+
+    /* شريط البحث */
+    #searchBar {
+      width: 100%;
+      padding: 12px 15px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      margin-bottom: 30px;
+      transition: border-color 0.3s;
+    }
+
+    #searchBar:focus {
+      outline: none;
+      border-color: #007aff;
+      box-shadow: 0 0 6px #007affaa;
+    }
+
+    /* Grid عرض الألعاب والتطبيقات */
     .tab-content {
       display: none;
     }
 
     .tab-content.active {
-      display: block;
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+      gap: 25px;
     }
 
     .game, .app {
-      margin: 25px 0;
-      padding: 20px;
-      background-color: #f1f1f1;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #fefefe;
+      border-radius: 14px;
+      padding: 20px 15px 30px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.08);
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .game:hover, .app:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
     }
 
     .game img, .app img {
-      width: 100%;
-      max-width: 150px;
-      height: auto;
-      border-radius: 8px;
+      width: 120px;
+      height: 120px;
       object-fit: contain;
-      margin-bottom: 15px;
+      margin-bottom: 18px;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
       transition: transform 0.3s ease;
     }
 
     .game img:hover, .app img:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
     .game h2, .app h2 {
-      font-size: 24px;
-      margin-bottom: 10px;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #333;
+      min-height: 56px;
     }
 
     .game a, .app a {
-      background-color: #28a745;
+      margin-top: auto;
+      background-color: #007aff;
       color: white;
-      padding: 10px 20px;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 16px;
       text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-      margin-top: 10px;
-      font-size: 18px;
+      box-shadow: 0 4px 12px #007affaa;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .game a:hover, .app a:hover {
-      background-color: #218838;
+      background-color: #005bb5;
+      box-shadow: 0 6px 18px #005bb5cc;
     }
 
-    footer {
-      text-align: center;
-      color: #888;
-      font-size: 14px;
-      margin-top: 40px;
-    }
-
-    #searchBar {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      font-size: 18px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-
-    .welcome-message {
-      position: fixed;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #007aff;
-      color: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      width: 80%;
-      text-align: center;
-      font-size: 20px;
-      animation: slideIn 1s ease-out forwards;
-    }
-
-    @keyframes slideIn {
-      from { transform: translateX(-50%) translateY(-100%); }
-      to { transform: translateX(-50%) translateY(0); }
-    }
-
-    .close-btn {
-      background: transparent;
-      color: white;
-      border: none;
-      font-size: 20px;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .close-btn:hover {
-      color: #ffd700;
-    }
-
+    /* رسالة التثبيت */
     .install-message {
       position: fixed;
       top: 0;
@@ -194,9 +196,50 @@
       width: 100%;
       z-index: 9999;
       display: none;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
     }
 
-    /* 🧩 Media Queries */
+    /* رسالة الترحيب */
+    .welcome-message {
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #007aff;
+      color: white;
+      padding: 20px 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgb(0 0 0 / 0.15);
+      z-index: 1000;
+      width: 90%;
+      max-width: 450px;
+      text-align: center;
+      font-size: 20px;
+      animation: slideIn 0.9s ease-out forwards;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+      to { transform: translateX(-50%) translateY(0); opacity: 1; }
+    }
+
+    .close-btn {
+      background: transparent;
+      color: white;
+      border: none;
+      font-size: 22px;
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close-btn:hover {
+      color: #ffd700;
+    }
+
+    /* تكيّف مع الشاشات */
     @media (max-width: 480px) {
       nav ul li {
         display: block;
@@ -204,37 +247,34 @@
       }
 
       .game, .app {
-        padding: 15px;
+        padding: 15px 10px 25px;
+      }
+
+      .game img, .app img {
+        width: 100px;
+        height: 100px;
       }
 
       .game h2, .app h2 {
-        font-size: 18px;
+        font-size: 16px;
+        min-height: 48px;
       }
 
       .game a, .app a {
-        padding: 8px 15px;
-        font-size: 16px;
+        padding: 10px 18px;
+        font-size: 14px;
       }
 
       .welcome-message {
-        font-size: 16px;
-        padding: 15px;
-        width: 90%;
+        font-size: 18px;
+        padding: 18px 20px;
+        width: 95%;
+        max-width: unset;
       }
 
       #searchBar {
         font-size: 16px;
-        padding: 8px;
-      }
-    }
-
-    @media (min-width: 481px) and (max-width: 768px) {
-      .game img, .app img {
-        max-width: 120px;
-      }
-
-      .game h2, .app h2 {
-        font-size: 20px;
+        padding: 10px;
       }
     }
   </style>
@@ -246,122 +286,115 @@
   </div>
 
   <div class="welcome-message" id="welcomeMessage">
-    <p>🎮 أهلا بك في متجر MRMODS للتطبيقات والألعاب المعدلة للايفون!</p>
-    <button class="close-btn" onclick="closeWelcomeMessage()">X</button>
+    <button class="close-btn" onclick="closeWelcomeMessage()">×</button>
+    <p>🎮 أهلاً بك في متجر MRMODS للتطبيقات والألعاب المعدلة للايفون!</p>
   </div>
 
   <nav>
     <ul>
-      <li><a href="javascript:void(0)" onclick="showTab('games')">الألعاب</a></li>
-      <li><a href="javascript:void(0)" onclick="showTab('apps')">التطبيقات</a></li>
+      <li><a href="javascript:void(0)" onclick="showTab('games', this)" class="active">الألعاب</a></li>
+      <li><a href="javascript:void(0)" onclick="showTab('apps', this)">التطبيقات</a></li>
     </ul>
   </nav>
 
   <div class="container" id="mainContent">
-    <h1><img src="https://yt3.googleusercontent.com/S9OBrJ-3VPK8kmNAOe7FktIe8SolU_zDRkDgBQTLuJNFeQUEzrfW3QmV9vlDzj_XU-Ildj4euMU=s160-c-k-c0x00ffffff-no-rj" alt="Store Icon" style="max-width: 40px; vertical-align: middle; margin-left: 10px;"> متجر ألعاب وتطبيقات iPhone</h1>
-    <p>لتثبيت الألعاب والتطبيقات، استخدم AltStore أو Sideloadly بعد تحميل الملف.</p>
+    <div class="site-title">
+      <img src="https://yt3.googleusercontent.com/S9OBrJ-3VPK8kmNAOe7FktIe8SolU_zDRkDgBQTLuJNFeQUEzrfW3QmV9vlDzj_XU-Ildj4euMU=s160-c-k-c0x00ffffff-no-rj" alt="Store Icon" />
+      متجر ألعاب وتطبيقات iPhone
+    </div>
 
-    <input type="text" id="searchBar" onkeyup="filterContent()" placeholder="ابحث هنا...">
+    <input type="text" id="searchBar" onkeyup="filterContent()" placeholder="ابحث هنا..." />
 
     <div id="games" class="tab-content active">
       <div class="game" data-name="Last Day On Earth: Survival">
-        <img src="https://m.media-amazon.com/images/I/71h4GRYcQWL.png" alt="Last Day On Earth: Survival">
-        <h2>Last Day On Earth: Survival </h2>
+        <img src="https://m.media-amazon.com/images/I/71h4GRYcQWL.png" alt="Last Day On Earth: Survival" />
+        <h2>Last Day On Earth: Survival</h2>
         <a href="https://filesharingbot-by-aj.onrender.com/dl/6868cb7cf5524635f472cc45" class="download">تحميل اللعبة</a>
       </div>
       <div class="game" data-name="Car Parking">
-        <img src="https://pbs.twimg.com/profile_images/1789308457574674432/W5_gHvKH_400x400.jpg" alt="Car Parking">
+        <img src="https://pbs.twimg.com/profile_images/1789308457574674432/W5_gHvKH_400x400.jpg" alt="Car Parking" />
         <h2>Car Parking</h2>
         <a href="https://uploda.sh/HLPaKvE6yVB2" class="download">تحميل اللعبة</a>
       </div>
-      <div class="game" data-name="Into the Dead 2">
-        <img src="https://ipaomtk.com/wp-content/uploads/2025/06/Into-the-Dead-2.webp" alt="Into the Dead 2">
-        <h2>Into the Dead 2 IPA MOD v1.78.0 (Unlimited Money) For iOS</h2>
-        <a href="https://file.ipaomtk.com/ipa/Into-The-Dead-2.ipa" class="download">تحميل اللعبة</a>
+      <div class="game" data-name="MadOut2 BigCityOnline">
+        <img src="https://cdn-icons-png.flaticon.com/512/4873/4873298.png" alt="MadOut2 BigCityOnline" />
+        <h2>MadOut2 BigCityOnline</h2>
+        <a href="https://uploda.sh/OpXUSq6Wy9Ck" class="download">تحميل اللعبة</a>
       </div>
-      <div class="game" data-name="Pocket Pool">
-        <img src="https://cdn.fileplanet.com/anic/at/sky-cue-club-android.png" alt="Pocket Pool">
-        <h2>Pocket Pool</h2>
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/686a38ecf5524635f472cc6d" class="download">تحميل اللعبة</a>
-      </div>
+      <!-- أضف المزيد من الألعاب هنا -->
     </div>
 
     <div id="apps" class="tab-content">
-      <div class="app" data-name="YouTube">
+      <div class="app" data-name="YouTube Plus">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube Plus" />
         <h2>YouTube Plus [v20.16.7]</h2>
-        <img src="https://ytliteplus.github.io/Logo.png" alt="YouTube Plus">
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c816f5524635f472cc43" class="download">تحميل التطبيق</a>
+        <a href="https://uploda.sh/CK9B1BpbTYy" class="download">تحميل التطبيق</a>
       </div>
-      <div class="app" data-name="WhatsApp">
-        <h2>Whatsapp v25.19.10</h2>
-        <img src="https://www.divxland.org/wp-content/uploads/2025/03/whatsapp-plus-thumbnail-1.png" alt="WhatsApp">
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c98df5524635f472cc44" class="download">تحميل التطبيق</a>
+      <div class="app" data-name="Telegram X">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram X" />
+        <h2>Telegram X [v11.11.0]</h2>
+        <a href="https://uploda.sh/Flbo5s8EWsk" class="download">تحميل التطبيق</a>
       </div>
-      <div class="app" data-name="Dazz Camera [v2.9.11]">
-        <h2>Dazz Camera [v2.9.11]</h2>
-        <img src="https://d1nxzqpcg2bym0.cloudfront.net/itunes_connect/1422471180/ed763df0-58f0-11f0-8dc9-4d771225b931/128x128" alt="Dazz Camera">
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868e147f5524635f472cc48" class="download">تحميل التطبيق</a>
-      </div>
-      <div class="app" data-name="Leonardo.Ai">
-        <h2>Leonardo.Ai – Image Generator IPA v1.5.7 For iOS</h2>
-        <img src="https://ipaomtk.com/wp-content/uploads/2025/06/Leonardo.Ai-8211-Image-Generator.webp" alt="Leonardo.Ai">
-        <a href="https://file.ipaomtk.com/ipa/Leonardo.Ai-ipaomtk.com.ipa" class="download">تحميل التطبيق</a>
-       </div>
-      <div class="app" data-name="Soundmap Pro">
-        <h2>Soundmap Pro 1.65.0</h2>
-        <img src="https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/app.mmap.mobile.png" alt="Soundmap Pro">
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/686a3977f5524635f472cc6e" class="download">تحميل التطبيق</a>
-      </div>
-      <div class="app" data-name="Tor Browser Premium">
-        <h2>Tor Browser Premium</h2>
-        <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2023/10/60/652904ad45998_org.torproject.torbrowser.png" alt="Tor Browser Premium">
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/686a3a18f5524635f472cc6f" class="download">تحميل التطبيق</a>
-      </div>
-      <div class="app" data-name="Watusi-Cracked">
-        <h2>Watusi-Cracked_25.13.77-RAY</h2>
-        <img src="https://api.fouadraheb.com/images/items/com.fouadraheb.watusi3_thumb.png" alt="Watusi-Cracked_25.13.77-RAY">
-        <a href="https://filesharingbot-by-aj.onrender.com/dl/686a3adef5524635f472cc70" class="download">تحميل التطبيق</a>
-      </div>
-
+      <!-- أضف المزيد من التطبيقات هنا -->
     </div>
- 
-    <footer>
-      ⚠️ جميع الحقوق محفوظة لأصحاب الألعاب والتطبيقات الأصلية. هذا الموقع لتسهيل التحميل للتطبيقات فقط.<br>
-      لتحميل وتثبيت التطبيقات، راجع قناتي علي اليوتيوب MRMODS.
-    </footer>
   </div>
 
   <script>
-    function showTab(tabName) {
-      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-      document.getElementById(tabName).classList.add('active');
+    function showTab(tabId, element) {
+      // تبديل عرض الأقسام
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+
+      // تغيير تفعيل الزر
+      document.querySelectorAll('nav ul li a').forEach(link => {
+        link.classList.remove('active');
+      });
+      element.classList.add('active');
+
+      // إعادة تفعيل البحث لتصفية القسم الجديد
+      filterContent();
     }
 
     function filterContent() {
-      const query = document.getElementById('searchBar').value.toLowerCase();
-      document.querySelectorAll('.game, .app').forEach(item => {
+      const input = document.getElementById('searchBar').value.toLowerCase();
+      const activeTab = document.querySelector('.tab-content.active');
+      const items = activeTab.querySelectorAll('.game, .app');
+
+      items.forEach(item => {
         const name = item.getAttribute('data-name').toLowerCase();
-        item.style.display = name.includes(query) ? 'flex' : 'none';
+        if (name.includes(input)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
       });
     }
 
+    // إظهار رسالة الترحيب ثم إخفائها
     function closeWelcomeMessage() {
       document.getElementById('welcomeMessage').style.display = 'none';
     }
 
-    if (!window.matchMedia('(display-mode: standalone)').matches) {
-      document.getElementById('mainContent').style.display = 'none';
-      document.getElementById('installMessage').style.display = 'block';
-    }
+    // إظهار رسالة التثبيت إذا لم يكن التطبيق مثبت
+    window.addEventListener('load', () => {
+      // يمكنك تعديل هذا الشرط ليتحقق من تثبيت التطبيق أو غيره
+      const isInstalled = false; // مثلا افتراضياً غير مثبت
 
-    // فتح روابط التحميل خارج PWA
-    document.querySelectorAll('a.download').forEach(link => {
-      link.addEventListener('click', function (e) {
-        if (window.matchMedia('(display-mode: standalone)').matches) {
-          e.preventDefault();
-          window.open(this.href, '_blank');
-        }
-      });
+      if (!isInstalled) {
+        document.getElementById('installMessage').style.display = 'block';
+
+        // إخفاء الرسالة بعد 7 ثواني
+        setTimeout(() => {
+          document.getElementById('installMessage').style.display = 'none';
+        }, 7000);
+      }
+
+      // إخفاء رسالة الترحيب تلقائياً بعد 5 ثواني
+      setTimeout(() => {
+        closeWelcomeMessage();
+      }, 5000);
     });
   </script>
 </body>
