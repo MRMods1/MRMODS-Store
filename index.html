@@ -2,262 +2,367 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🎮 متجر ألعاب وتطبيقات iPhone - MRMODS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎮 متجر ألعاب وتطبيقات iPhone</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  
+  <!-- Manifest -->
   <link rel="manifest" href="manifest.json" />
+
   <style>
-    /* Reset بسيط */
-    * {
-      box-sizing: border-box;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f8f8;
       margin: 0;
       padding: 0;
-    }
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
       color: #333;
-      direction: rtl;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
-    header {
-      background: #222;
-      color: #fff;
-      padding: 15px 20px;
+
+    h1, h2 {
+      color: #333;
       text-align: center;
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 1px;
+      margin-bottom: 10px;
     }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     nav {
       background: #007aff;
-      padding: 10px 0;
-      text-align: center;
-      box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
-    }
-    nav button {
-      background: transparent;
-      border: none;
-      color: #fff;
-      font-size: 18px;
-      font-weight: 600;
-      margin: 0 15px;
-      cursor: pointer;
-      padding: 8px 15px;
-      border-radius: 6px;
-      transition: background-color 0.3s;
-    }
-    nav button.active,
-    nav button:hover {
-      background-color: #005ecb;
-    }
-    /* التنبيه الخاص بالتثبيت */
-    .install-notification {
-      background-color: #f5f5f5;
-      color: #333;
       padding: 15px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
       text-align: center;
-      font-size: 18px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      display: none;
     }
-    .install-notification button {
-      background-color: #007aff;
+
+    nav ul li {
+      display: inline;
+      margin: 0 15px;
+    }
+
+    nav ul li a {
       color: white;
-      font-size: 16px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      transition: color 0.3s;
     }
-    .install-notification button:hover {
-      background-color: #005ecb;
+
+    nav ul li a:hover {
+      color: #ffd700;
     }
-    main {
-      display: none;
-      flex-grow: 1;
-      max-width: 1100px;
-      margin: 25px auto;
-      padding: 0 15px 50px;
-      width: 100%;
-    }
-    main.pwa-active {
-      display: flex;
-      flex-direction: column;
-    }
+
     .tab-content {
       display: none;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
     }
+
     .tab-content.active {
-      display: flex;
+      display: block;
     }
-    .card {
-      background: white;
-      box-shadow: 0 2px 10px rgb(0 0 0 / 0.1);
-      border-radius: 15px;
-      width: 250px;
+
+    .game, .app {
+      margin: 25px 0;
+      padding: 20px;
+      background-color: #f1f1f1;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 15px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
       text-align: center;
     }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 20px rgb(0 0 0 / 0.15);
-    }
-    .card img {
-      width: 150px;
-      height: 150px;
-      object-fit: contain;
-      border-radius: 15px;
-      margin-bottom: 15px;
-    }
-    .card h2 {
-      font-size: 18px;
-      margin-bottom: 12px;
-      font-weight: 700;
-      min-height: 52px;
-    }
-    .card a.download-btn {
-      background-color: #007aff;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
+
+    .game img, .app img {
       width: 100%;
-      display: inline-block;
+      max-width: 150px;
+      height: auto;
+      border-radius: 8px;
+      object-fit: contain;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .game img:hover, .app img:hover {
+      transform: scale(1.05);
+    }
+
+    .game h2, .app h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .game a, .app a {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
       transition: background-color 0.3s;
+      margin-top: 10px;
+      font-size: 18px;
     }
-    .card a.download-btn:hover {
-      background-color: #005ecb;
+
+    .game a:hover, .app a:hover {
+      background-color: #218838;
     }
+
     footer {
-      background: #222;
-      color: #aaa;
       text-align: center;
-      padding: 20px 15px;
+      color: #888;
       font-size: 14px;
-      margin-top: auto;
-      user-select: none;
+      margin-top: 40px;
+    }
+
+    #searchBar {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 18px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .welcome-message {
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #007aff;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      width: 80%;
+      text-align: center;
+      font-size: 20px;
+      animation: slideIn 1s ease-out forwards;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-50%) translateY(-100%); }
+      to { transform: translateX(-50%) translateY(0); }
+    }
+
+    .close-btn {
+      background: transparent;
+      color: white;
+      border: none;
+      font-size: 20px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #ffd700;
+    }
+
+    .install-message {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ff6a00;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      text-align: center;
+      width: 100%;
+      z-index: 9999;
+      display: none;
+    }
+
+    /* 🧩 Media Queries */
+    @media (max-width: 480px) {
+      nav ul li {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .game, .app {
+        padding: 15px;
+      }
+
+      .game h2, .app h2 {
+        font-size: 18px;
+      }
+
+      .game a, .app a {
+        padding: 8px 15px;
+        font-size: 16px;
+      }
+
+      .welcome-message {
+        font-size: 16px;
+        padding: 15px;
+        width: 90%;
+      }
+
+      #searchBar {
+        font-size: 16px;
+        padding: 8px;
+      }
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+      .game img, .app img {
+        max-width: 120px;
+      }
+
+      .game h2, .app h2 {
+        font-size: 20px;
+      }
     }
   </style>
 </head>
 <body>
 
-<header>🎮 متجر MRMODS للألعاب والتطبيقات</header>
-
-<!-- التنبيه الخاص بتثبيت التطبيق -->
-<div class="install-notification">
-  <p>لتثبيت التطبيق كـ PWA على جهازك، قم باتباع الخطوات التالية:</p>
-  <ol>
-    <li>افتح قائمة المتصفح (عادةً عبر الضغط على الأيقونة في الأعلى أو الثلاث نقاط).</li>
-    <li>اختر <strong>إضافة إلى الشاشة الرئيسية</strong>.</li>
-    <li>اضغط على <strong>إضافة</strong>، وستتمكن من استخدام التطبيق كـ PWA.</li>
-  </ol>
-  <button onclick="dismissNotification()">فهمت</button>
-</div>
-
-<nav>
-  <button class="tab-btn active" data-target="games">الألعاب</button>
-  <button class="tab-btn" data-target="apps">التطبيقات</button>
-</nav>
-
-<main>
-  <div id="games" class="tab-content active">
-    <div class="game" data-name="Last Day On Earth: Survival">
-      <img src="https://m.media-amazon.com/images/I/71h4GRYcQWL.png" alt="Last Day On Earth: Survival">
-      <h2>Last Day On Earth: Survival</h2>
-      <a href="https://filesharingbot-by-aj.onrender.com/dl/6868cb7cf5524635f472cc45" class="download">تحميل اللعبة</a>
-    </div>
-    <div class="game" data-name="Car Parking">
-      <img src="https://pbs.twimg.com/profile_images/1789308457574674432/W5_gHvKH_400x400.jpg" alt="Car Parking">
-      <h2>Car Parking</h2>
-      <a href="https://uploda.sh/HLPaKvE6yVB2" class="download">تحميل اللعبة</a>
-    </div>
-    <div class="game" data-name="Into the Dead 2">
-      <img src="https://ipaomtk.com/wp-content/uploads/2025/06/Into-the-Dead-2.webp" alt="Into the Dead 2">
-      <h2>Into the Dead 2 IPA MOD v1.78.0 (Unlimited Money) For iOS</h2>
-      <a href="https://file.ipaomtk.com/ipa/Into-The-Dead-2.ipa" class="download">تحميل اللعبة</a>
-    </div>
-    <div class="game" data-name="Pocket Pool">
-      <img src="https://cdn.fileplanet.com/anic/at/sky-cue-club-android.png" alt="Pocket Pool">
-      <h2>Pocket Pool</h2>
-      <a href="https://filesharingbot-by-aj.onrender.com/dl/686a38ecf5524635f472cc6d" class="download">تحميل اللعبة</a>
-    </div>
+  <div class="install-message" id="installMessage">
+    <p>📲 لتجربة المتجر، يجب تثبيت التطبيق على جهازك!</p>
   </div>
 
-  <div id="apps" class="tab-content">
-    <div class="app" data-name="YouTube">
-      <h2>YouTube Plus [v20.16.7]</h2>
-      <img src="https://ytliteplus.github.io/Logo.png" alt="YouTube Plus">
-      <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c816f5524635f472cc43" class="download">تحميل التطبيق</a>
-    </div>
-    <div class="app" data-name="WhatsApp">
-      <h2>Whatsapp v25.19.10</h2>
-      <img src="https://www.divxland.org/wp-content/uploads/2025/03/whatsapp-plus-thumbnail-1.png" alt="WhatsApp">
-      <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c98df5524635f472cc44" class="download">تحميل التطبيق</a>
-    </div>
-    <div class="app" data-name="Dazz Camera [v2.9.11]">
-      <h2>Dazz Camera [v2.9.11]</h2>
-      <img src="https://d1nxzqpcg2bym0.cloudfront.net/itunes_connect/1422471180/ed763df0-58f0-11f0-8dc9-4d771225b931/128x128" alt="Dazz Camera">
-      <a href="https://filesharingbot-by-aj.onrender.com/dl/6868e147f5524635f472cc48" class="download">تحميل التطبيق</a>
-    </div>
-    <div class="app" data-name="Leonardo.Ai">
-      <h2>Leonardo.Ai – Image Generator IPA v1.5.7 For iOS</h2>
-      <img src="https://ipaomtk.com/wp-content/uploads/2025/06/Leonardo.Ai-8211-Image-Generator.webp" alt="Leonardo.Ai">
-      <a href="https://file.ipaomtk.com/ipa/Leonardo.Ai-ipaomtk.com.ipa" class="download">تحميل التطبيق</a>
-    </div>
-    <div class="app" data-name="Soundmap Pro">
-      <h2>Soundmap Pro 1.65.0</h2>
-      <img src="https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/app.mmap.mobile.png" alt="Soundmap Pro">
-      <a href="https://filesharingbot-by-aj.onrender.com/dl/686a3977f5524635f472cc6e" class="download">تحميل التطبيق</a>
-    </div>
-    <div class="app" data-name="Tor Browser Premium">
-      <h2>Tor Browser Premium</h2>
-      <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2023/10/60/652904ad45998_org.torproject.torbrowser.png" alt="Tor Browser Premium">
-      <a href="https://filesharingbot-by-aj.onrender.com/dl/686a3a18f5524635f472cc6f" class="download">تحميل التطبيق</a>
-    </div>
-    <div class="app" data-name="Watusi-Cracked">
-      <h2>Watusi-Cracked_25.13.77-RAY</h2>
-      <img src="https://api.fouadraheb.com/images/items/com.fouadraheb.watusi3_thumb.png" alt="Watusi-Cracked_25.13.77-RAY">
-      <a href="https://filesharingbot-by-aj.onrender.com/dl/686a3adef5524635f472cc70" class="download">تحميل التطبيق</a>
-    </div>
+  <div class="welcome-message" id="welcomeMessage">
+    <p>🎮 أهلا بك في متجر MRMODS للتطبيقات والألعاب المعدلة للايفون!</p>
+    <button class="close-btn" onclick="closeWelcomeMessage()">X</button>
   </div>
-</main>
 
-<footer>
-  <p>&copy; 2025 MRMODS - جميع الحقوق محفوظة.</p>
-</footer>
+  <nav>
+    <ul>
+      <li><a href="javascript:void(0)" onclick="showTab('games')">الألعاب</a></li>
+      <li><a href="javascript:void(0)" onclick="showTab('apps')">التطبيقات</a></li>
+    </ul>
+  </nav>
 
-<script>
-  // أداة التنبيه لخاصية PWA
-  function dismissNotification() {
-    document.querySelector(".install-notification").style.display = "none";
-  }
+  <div class="container" id="mainContent">
+    <h1><img src="https://yt3.googleusercontent.com/S9OBrJ-3VPK8kmNAOe7FktIe8SolU_zDRkDgBQTLuJNFeQUEzrfW3QmV9vlDzj_XU-Ildj4euMU=s160-c-k-c0x00ffffff-no-rj" alt="Store Icon" style="max-width: 40px; vertical-align: middle; margin-left: 10px;"> متجر ألعاب وتطبيقات iPhone</h1>
+    <p>لتثبيت الألعاب والتطبيقات، استخدم AltStore أو Sideloadly بعد تحميل الملف.</p>
 
-  // تحويل بين التبويبات
-  document.querySelectorAll(".tab-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelector(".tab-btn.active").classList.remove("active");
-      btn.classList.add("active");
-      document.querySelector(".tab-content.active").classList.remove("active");
-      document.getElementById(btn.dataset.target).classList.add("active");
+    <input type="text" id="searchBar" onkeyup="filterContent()" placeholder="ابحث هنا...">
+
+    <div id="games" class="tab-content active">
+      <div class="game" data-name="Last Day On Earth: Survival">
+        <img src="https://m.media-amazon.com/images/I/71h4GRYcQWL.png" alt="Last Day On Earth: Survival">
+        <h2>Last Day On Earth: Survival </h2>
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868cb7cf5524635f472cc45" class="download">تحميل اللعبة</a>
+      </div>
+      <div class="game" data-name="Car Parking">
+        <img src="https://pbs.twimg.com/profile_images/1789308457574674432/W5_gHvKH_400x400.jpg" alt="Car Parking">
+        <h2>Car Parking</h2>
+        <a href="https://uploda.sh/HLPaKvE6yVB2" class="download">تحميل اللعبة</a>
+      </div>
+      <div class="game" data-name="Into the Dead 2">
+        <img src="https://ipaomtk.com/wp-content/uploads/2025/06/Into-the-Dead-2.webp" alt="Into the Dead 2">
+        <h2>Into the Dead 2 IPA MOD v1.78.0 (Unlimited Money) For iOS</h2>
+        <a href="https://file.ipaomtk.com/ipa/Into-The-Dead-2.ipa" class="download">تحميل اللعبة</a>
+      </div>
+      <div class="game" data-name="Pocket Pool">
+        <img src="https://cdn.fileplanet.com/anic/at/sky-cue-club-android.png" alt="Pocket Pool">
+        <h2>Pocket Pool</h2>
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/686a38ecf5524635f472cc6d" class="download">تحميل اللعبة</a>
+      </div>
+    </div>
+
+    <div id="apps" class="tab-content">
+      <div class="app" data-name="YouTube">
+        <h2>YouTube Plus [v20.16.7]</h2>
+        <img src="https://ytliteplus.github.io/Logo.png" alt="YouTube Plus">
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c816f5524635f472cc43" class="download">تحميل التطبيق</a>
+      </div>
+      <div class="app" data-name="WhatsApp">
+        <h2>Whatsapp v25.19.10</h2>
+        <img src="https://www.divxland.org/wp-content/uploads/2025/03/whatsapp-plus-thumbnail-1.png" alt="WhatsApp">
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868c98df5524635f472cc44" class="download">تحميل التطبيق</a>
+      </div>
+      <div class="app" data-name="Dazz Camera [v2.9.11]">
+        <h2>Dazz Camera [v2.9.11]</h2>
+        <img src="https://d1nxzqpcg2bym0.cloudfront.net/itunes_connect/1422471180/ed763df0-58f0-11f0-8dc9-4d771225b931/128x128" alt="Dazz Camera">
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/6868e147f5524635f472cc48" class="download">تحميل التطبيق</a>
+      </div>
+      <div class="app" data-name="Leonardo.Ai">
+        <h2>Leonardo.Ai – Image Generator IPA v1.5.7 For iOS</h2>
+        <img src="https://ipaomtk.com/wp-content/uploads/2025/06/Leonardo.Ai-8211-Image-Generator.webp" alt="Leonardo.Ai">
+        <a href="https://file.ipaomtk.com/ipa/Leonardo.Ai-ipaomtk.com.ipa" class="download">تحميل التطبيق</a>
+       </div>
+      <div class="app" data-name="Soundmap Pro">
+        <h2>Soundmap Pro 1.65.0</h2>
+        <img src="https://raw.githubusercontent.com/apptesters-org/AppTesters_Repo/main/icons/app.mmap.mobile.png" alt="Soundmap Pro">
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/686a3977f5524635f472cc6e" class="download">تحميل التطبيق</a>
+      </div>
+      <div class="app" data-name="Tor Browser Premium">
+        <h2>Tor Browser Premium</h2>
+        <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2023/10/60/652904ad45998_org.torproject.torbrowser.png" alt="Tor Browser Premium">
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/686a3a18f5524635f472cc6f" class="download">تحميل التطبيق</a>
+      </div>
+      <div class="app" data-name="Watusi-Cracked">
+        <h2>Watusi-Cracked_25.13.77-RAY</h2>
+        <img src="https://api.fouadraheb.com/images/items/com.fouadraheb.watusi3_thumb.png" alt="Watusi-Cracked_25.13.77-RAY">
+        <a href="https://filesharingbot-by-aj.onrender.com/dl/686a3adef5524635f472cc70" class="download">تحميل التطبيق</a>
+      </div>
+
+    </div>
+ 
+    <footer>
+      ⚠️ جميع الحقوق محفوظة لأصحاب الألعاب والتطبيقات الأصلية. هذا الموقع لتسهيل التحميل للتطبيقات فقط.<br>
+      لتحميل وتثبيت التطبيقات، راجع قناتي علي اليوتيوب MRMODS.
+    </footer>
+  </div>
+
+  <script>
+    function showTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.getElementById(tabName).classList.add('active');
+    }
+
+    function filterContent() {
+      const query = document.getElementById('searchBar').value.toLowerCase();
+      document.querySelectorAll('.game, .app').forEach(item => {
+        const name = item.getAttribute('data-name').toLowerCase();
+        item.style.display = name.includes(query) ? 'flex' : 'none';
+      });
+    }
+
+    function closeWelcomeMessage() {
+      document.getElementById('welcomeMessage').style.display = 'none';
+    }
+
+    if (!window.matchMedia('(display-mode: standalone)').matches) {
+      document.getElementById('mainContent').style.display = 'none';
+      document.getElementById('installMessage').style.display = 'block';
+    }
+
+    // فتح روابط التحميل خارج PWA
+    document.querySelectorAll('a.download').forEach(link => {
+      link.addEventListener('click', function (e) {
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+          e.preventDefault();
+          window.open(this.href, '_blank');
+        }
+      });
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
